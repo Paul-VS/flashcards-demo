@@ -1,38 +1,32 @@
-# create-svelte
+Video to Flashcards
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This project is a Svelte demo app that allows a user to input a video URL and receive flashcards with information from that video.
+Prerequisites
 
-## Creating a project
+    Node.js (v14 or higher)
+    npm or yarn
 
-If you're seeing this, you've probably already done this step. Congrats!
+Installation
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+    Clone the repo
+    Run npm install or yarn install
+    Run npm run dev or yarn dev to start the development server.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Usage
 
-## Developing
+After running the development server, navigate to http://localhost:port to see the demo app in action.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+    Enter a video URL in the input field.
+    Click the "Submit" button.
+    The flashcards generated from the video will be displayed on the page.
 
-```bash
-npm run dev
+Code Breakdown
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+page.svelte:
+This file contains the main logic for the Svelte demo app. It imports the Card component from "Card.svelte" and includes a form for the user to input a video URL. When the user submits the form, a function called createFlashcards makes a POST request to the server at "/api/video-to-flashcards". If the request is successful, the response data is used to update the flashcards array, which is used to render the Card components on the page.
 
-## Building
+Card.svelte:
+This file contains the logic for the individual flashcard component. It takes in a card prop with front and back properties. It uses a CSS flip animation to display the front and back of the flashcard.
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+api/video-to-flashcards/+server.js:
+This file contains the code for the server's "/api/video-to-flashcards" endpoint. It receives a POST request with a URL in the request body, and it returns a JSON object with six cards as a response for demo purposes.
