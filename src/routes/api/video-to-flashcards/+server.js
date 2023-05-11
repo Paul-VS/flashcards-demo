@@ -3,8 +3,8 @@ import { json } from '@sveltejs/kit';
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function POST({ request }) {
 	try {
-		const data = request.body;
-		console.log(data);
+		const url = await request.json();
+		console.log('URL: ', url);
 
 		// Create the JSON object with six cards
 		const response = {
